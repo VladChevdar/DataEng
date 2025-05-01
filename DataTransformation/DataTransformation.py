@@ -30,8 +30,10 @@ trip_df = trip_df.drop(columns=['OPD_DATE', 'ACT_TIME'])
 trip_df['dMETERS'] = trip_df['METERS'].diff()
 trip_df['dTIMESTAMP'] = trip_df['TIMESTAMP'].diff().dt.total_seconds()
 
-trip_df["SPEED"] = trip_df["dMETERS"] / trip_df["dTIMESTAMP"]
-trip_df["SPEED"] = trip_df["SPEED"].where(trip_df["dTIMESTAMP"] > 0, 0)
+trip_df['SPEED'] = trip_df.apply(
+    lambda row: row['dMETERS'] / row['dTIMESTAMP'] if row['dTIMESTAMP'] and row['dTIMESTAMP'] > 0 else 0,
+    axis=1
+)
 
 trip_df = trip_df.drop(columns=['dMETERS', 'dTIMESTAMP'])
 
