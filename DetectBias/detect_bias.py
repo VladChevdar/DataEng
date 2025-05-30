@@ -89,6 +89,5 @@ if biased_gps:
     df_biased_gps = pd.DataFrame(biased_gps).sort_values("p_value")
     print("\nVehicles with biased GPS (p < 0.005):")
     print(df_biased_gps.to_string(index=False))
-    df_biased_gps.to_csv("biased_gps_vehicles.csv", index=False)
 else:
     print("No GPS bias found.")
