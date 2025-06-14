@@ -1,8 +1,0 @@
-<script>start("/Users/vladchevdar/DataSyntesisLab/DataSynthesis/plots/");</script>
-<script>onHasParentDirectory();</script>
-<script>addRow("birth_year_distribution.png","birth_year_distribution.png",0,55181,"53.9 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
-<script>addRow("country_of_birth.png","country_of_birth.png",0,27994,"27.3 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
-<script>addRow("department_counts.png","department_counts.png",0,39708,"38.8 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
-<script>addRow("department_salary_kde.png","department_salary_kde.png",0,88181,"86.1 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
-<script>addRow("hire_day_counts.png","hire_day_counts.png",0,28046,"27.4 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
-<script>addRow("salary_kde.png","salary_kde.png",0,31004,"30.3 kB",1749870898,"6/13/25, 8:14:58 PM");</script>
