@@ -81,12 +81,12 @@ emp_df = pd.DataFrame(employees)
 emp_df.to_csv('employee_data.csv', index=False)
 
 # Calculate age for each employee
-current_date = datetime(2024, 6, 1)  # Using a fixed current date
+current_date = datetime(2024, 6, 1)
 emp_df['age'] = ((current_date - pd.to_datetime(emp_df['birthdate'])).dt.days / 365.25).astype(int)
 
 # Create sampling weights based on age
 weights = np.ones(len(emp_df))
-weights[(emp_df['age'] >= 40) & (emp_df['age'] < 50)] = 3  # Triple the weight for ages 40-49
+weights[(emp_df['age'] >= 40) & (emp_df['age'] < 50)] = 3
 
 # Create the biased sample
 smpl_df = emp_df.sample(n=500, weights=weights, random_state=42)
@@ -94,10 +94,10 @@ smpl_df = emp_df.sample(n=500, weights=weights, random_state=42)
 # Create perturbed salary data
 prtrb_df = emp_df.copy()
 mean_salary = emp_df['salary'].mean()
-std_dev = mean_salary * 0.05  # 5% of mean salary as standard deviation
+std_dev = mean_salary * 0.05
 noise = np.random.normal(0, std_dev, size=len(emp_df))
 prtrb_df['salary'] = prtrb_df['salary'] + noise
-prtrb_df['salary'] = prtrb_df['salary'].round(2)  # Round to 2 decimal places
+prtrb_df['salary'] = prtrb_df['salary'].round(2)
 
 # Print output
 print("\n=== Original Employee Data (emp_df) ===")
@@ -125,7 +125,6 @@ print(smpl_df.head(10))
 total_payroll = emp_df['salary'].sum()
 print(f"\n--- Total Yearly Payroll: ${total_payroll:,.2f} ---")
 
-# Create plots directory if it doesn't exist
 os.makedirs('plots', exist_ok=True)
 
 plt.style.use('default')
