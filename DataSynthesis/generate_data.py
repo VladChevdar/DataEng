@@ -188,11 +188,11 @@ plt.close()
 
 # F. Department salary KDE plots
 plt.figure(figsize=(15, 8))
-sns.kdeplot(data=emp_df, x='salary', hue='department')
+sns.kdeplot(data=emp_df, x='salary', hue='department', label='Department')
 plt.title('Salary Distribution by Department')
 plt.xlabel('Salary')
 plt.ylabel('Density')
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.legend(title='Department', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.savefig('plots/department_salary_kde.png')
 plt.close()
