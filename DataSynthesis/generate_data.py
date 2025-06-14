@@ -117,7 +117,7 @@ os.makedirs('plots', exist_ok=True)
 
 plt.style.use('default')
 
-# 1. Country of Birth bar chart
+# A. Country of Birth bar chart
 plt.figure(figsize=(12, 6))
 country_counts = emp_df['CountryOfBirth'].value_counts()
 sns.barplot(x=country_counts.index, y=country_counts.values)
@@ -127,7 +127,7 @@ plt.tight_layout()
 plt.savefig('plots/country_of_birth.png')
 plt.close()
 
-# 2. Department bar chart
+# B. Department bar chart
 plt.figure(figsize=(12, 6))
 dept_counts = emp_df['department'].value_counts()
 sns.barplot(x=dept_counts.index, y=dept_counts.values)
@@ -137,7 +137,7 @@ plt.tight_layout()
 plt.savefig('plots/department_counts.png')
 plt.close()
 
-# 3. Day of week hiring bar chart
+# C. Day of week hiring bar chart
 plt.figure(figsize=(12, 6))
 emp_df['hire_day'] = pd.to_datetime(emp_df['hiredate']).dt.day_name()
 day_counts = emp_df['hire_day'].value_counts()
@@ -150,7 +150,7 @@ plt.tight_layout()
 plt.savefig('plots/hire_day_counts.png')
 plt.close()
 
-# 4. Salary KDE plot
+# D. Salary KDE plot
 plt.figure(figsize=(12, 6))
 sns.kdeplot(data=emp_df['salary'])
 plt.title('Salary Distribution')
@@ -160,7 +160,7 @@ plt.tight_layout()
 plt.savefig('plots/salary_kde.png')
 plt.close()
 
-# 5. Birth year line plot
+# E. Birth year line plot
 plt.figure(figsize=(12, 6))
 emp_df['birth_year'] = pd.to_datetime(emp_df['birthdate']).dt.year
 birth_year_counts = emp_df['birth_year'].value_counts().sort_index()
@@ -173,7 +173,7 @@ plt.tight_layout()
 plt.savefig('plots/birth_year_distribution.png')
 plt.close()
 
-# 6. Department salary KDE plots
+# F. Department salary KDE plots
 plt.figure(figsize=(15, 8))
 sns.kdeplot(data=emp_df, x='salary', hue='department')
 plt.title('Salary Distribution by Department')
