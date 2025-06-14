@@ -1,3 +1,4 @@
+# Vlad Chevdar | DataEng S25 - Data Synthesis Lab Assignment
 import pandas as pd
 import numpy as np
 from faker import Faker
@@ -98,19 +99,31 @@ noise = np.random.normal(0, std_dev, size=len(emp_df))
 prtrb_df['salary'] = prtrb_df['salary'] + noise
 prtrb_df['salary'] = prtrb_df['salary'].round(2)  # Round to 2 decimal places
 
-# Print perturbed data statistics
+# Print output
+print("\n=== Original Employee Data (emp_df) ===")
+print("\n--- emp_df.describe(include='all') ---")
+pd.set_option('display.float_format', lambda x: f'{x:,.2f}')
+print(emp_df.describe(include='all', percentiles=[.25, .5, .75]))
+
+print("\n--- emp_df.head(10) ---")
+print(emp_df.head(10))
+
+print("\n=== Perturbed Data (prtrb_df) ===")
 print("\n--- prtrb_df.describe(include='all') ---")
 print(prtrb_df.describe(include='all', percentiles=[.25, .5, .75]))
 
 print("\n--- prtrb_df.head(10) ---")
 print(prtrb_df.head(10))
 
-# Print sample statistics
+print("\n=== Sampled Data (smpl_df) ===")
 print("\n--- smpl_df.describe(include='all') ---")
 print(smpl_df.describe(include='all', percentiles=[.25, .5, .75]))
 
 print("\n--- smpl_df.head(10) ---")
 print(smpl_df.head(10))
+
+total_payroll = emp_df['salary'].sum()
+print(f"\n--- Total Yearly Payroll: ${total_payroll:,.2f} ---")
 
 # Create plots directory if it doesn't exist
 os.makedirs('plots', exist_ok=True)
@@ -183,14 +196,3 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.savefig('plots/department_salary_kde.png')
 plt.close()
-
-# Print output
-print("\n--- emp_df.describe(include='all') ---")
-pd.set_option('display.float_format', lambda x: f'{x:,.2f}')
-print(emp_df.describe(include='all', percentiles=[.25, .5, .75]))
-
-print("\n--- emp_df.head(10) ---")
-print(emp_df.head(10))
-
-total_payroll = emp_df['salary'].sum()
-print(f"\n--- Total Yearly Payroll: ${total_payroll:,.2f} ---")
